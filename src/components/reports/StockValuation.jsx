@@ -13,7 +13,7 @@ const StockValuation = ({ valuation }) => {
       <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg p-6 mb-4 text-white">
         <div className="flex items-center gap-2 mb-2">
           <DollarSign className="w-5 h-5" />
-          <span className="text-sm font-medium opacity-90">Total Stock Value</span>
+          <span className="text-sm font-medium opacity-90">Total Nilai Stok</span>
         </div>
         <p className="text-3xl font-bold">{formatCurrency(valuation.totalValue)}</p>
       </div>
@@ -38,7 +38,7 @@ const StockValuation = ({ valuation }) => {
       <div>
         <h4 className="font-medium text-gray-900 mb-3 flex items-center gap-2">
           <Package className="w-4 h-4" />
-          Top Valuable Items
+          Item Bernilai Tinggi
         </h4>
         <div className="space-y-2">
           {valuation.topValuable.map((item, index) => (

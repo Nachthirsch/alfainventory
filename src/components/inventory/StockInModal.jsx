@@ -19,10 +19,10 @@ const StockInModal = ({ isOpen, onClose, item = null }) => {
   if (!isOpen) return null;
 
   const supplierOptions = [
-    { value: 'Supplier A', label: 'Supplier A' },
-    { value: 'Supplier B', label: 'Supplier B' },
-    { value: 'Supplier C', label: 'Supplier C' },
-    { value: 'Other', label: 'Other' },
+    { value: 'Supplier A', label: 'Pemasok A' },
+    { value: 'Supplier B', label: 'Pemasok B' },
+    { value: 'Supplier C', label: 'Pemasok C' },
+    { value: 'Other', label: 'Lainnya' },
   ];
 
   return (
@@ -35,7 +35,7 @@ const StockInModal = ({ isOpen, onClose, item = null }) => {
           <div className="flex items-center justify-between p-4 border-b border-gray-200">
             <div className="flex items-center gap-2">
               <Package className="w-5 h-5 text-green-600" />
-              <h3 className="text-lg font-semibold text-gray-900">Stock In</h3>
+              <h3 className="text-lg font-semibold text-gray-900">Stok Masuk</h3>
             </div>
             <button
               onClick={onClose}
@@ -49,7 +49,7 @@ const StockInModal = ({ isOpen, onClose, item = null }) => {
           <div className="p-4 space-y-4">
             {/* Date */}
             <Input
-              label="Date"
+              label="Tanggal"
               type="datetime-local"
               value={formData.date}
               onChange={(e) => setFormData({ ...formData, date: e.target.value })}
@@ -62,13 +62,13 @@ const StockInModal = ({ isOpen, onClose, item = null }) => {
                 <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
                   <span className="w-2 h-2 bg-green-500 rounded-full" />
                   <span className="font-medium">{item.name}</span>
-                  <span className="text-gray-500">({item.current} {item.unit} in stock)</span>
+                  <span className="text-gray-500">({item.current} {item.unit} tersedia)</span>
                 </div>
               </div>
             ) : (
               <Select
                 label="Item"
-                placeholder="Select item"
+                placeholder="Pilih item"
                 options={[
                   { value: 'bakso', label: 'Bakso' },
                   { value: 'mie', label: 'Mie' },
@@ -80,14 +80,14 @@ const StockInModal = ({ isOpen, onClose, item = null }) => {
             {/* Quantity and Unit */}
             <div className="grid grid-cols-2 gap-4">
               <Input
-                label="Quantity"
+                label="Jumlah"
                 type="number"
                 placeholder="0"
                 value={formData.quantity}
                 onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
               />
               <Input
-                label="Unit"
+                label="Satuan"
                 value={item?.unit || formData.unit}
                 disabled={!!item}
                 inputClassName={item ? 'bg-gray-100' : ''}
@@ -96,8 +96,8 @@ const StockInModal = ({ isOpen, onClose, item = null }) => {
 
             {/* Supplier */}
             <Select
-              label="Supplier"
-              placeholder="Select supplier"
+              label="Pemasok"
+              placeholder="Pilih pemasok"
               options={supplierOptions}
               value={formData.supplier}
               onChange={(e) => setFormData({ ...formData, supplier: e.target.value })}
@@ -105,15 +105,15 @@ const StockInModal = ({ isOpen, onClose, item = null }) => {
 
             {/* Invoice Number */}
             <Input
-              label="Invoice/PO Number"
-              placeholder="e.g., PO#123"
+              label="Nomor Faktur/PO"
+              placeholder="cth: PO#123"
               value={formData.invoiceNumber}
               onChange={(e) => setFormData({ ...formData, invoiceNumber: e.target.value })}
             />
 
             {/* Cost */}
             <Input
-              label="Total Cost (Rp)"
+              label="Total Biaya (Rp)"
               type="number"
               placeholder="0"
               value={formData.cost}
@@ -122,8 +122,8 @@ const StockInModal = ({ isOpen, onClose, item = null }) => {
 
             {/* Notes */}
             <Textarea
-              label="Notes (Optional)"
-              placeholder="Additional notes..."
+              label="Catatan (Opsional)"
+              placeholder="Catatan tambahan..."
               rows={2}
               value={formData.notes}
               onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
@@ -133,9 +133,9 @@ const StockInModal = ({ isOpen, onClose, item = null }) => {
           {/* Footer */}
           <div className="flex items-center justify-end gap-3 p-4 border-t border-gray-200">
             <Button variant="outline" onClick={onClose}>
-              Cancel
+              Batal
             </Button>
-            <Button variant="success">Add Stock</Button>
+            <Button variant="success">Tambah Stok</Button>
           </div>
         </div>
       </div>

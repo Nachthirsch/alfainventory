@@ -39,11 +39,11 @@ const InventoryTable = ({ items, onQuickAdd, onViewHistory }) => {
         <TableHead>
           <TableRow hover={false}>
             <TableHeader>Item</TableHeader>
-            <TableHeader>Type</TableHeader>
-            <TableHeader align="right">Current Stock</TableHeader>
-            <TableHeader align="right">Minimum Stock</TableHeader>
+            <TableHeader>Tipe</TableHeader>
+            <TableHeader align="right">Stok Saat Ini</TableHeader>
+            <TableHeader align="right">Stok Minimum</TableHeader>
             <TableHeader align="center">Status</TableHeader>
-            <TableHeader align="center">Actions</TableHeader>
+            <TableHeader align="center">Aksi</TableHeader>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -78,14 +78,14 @@ const InventoryTable = ({ items, onQuickAdd, onViewHistory }) => {
                   <button
                     onClick={() => onQuickAdd(item)}
                     className="p-1.5 rounded-lg text-gray-500 hover:text-green-600 hover:bg-green-50 transition-colors"
-                    title="Quick Stock In"
+                    title="Stok Masuk Cepat"
                   >
                     <Plus className="w-4 h-4" />
                   </button>
                   <button
                     onClick={() => onViewHistory(item)}
                     className="p-1.5 rounded-lg text-gray-500 hover:text-blue-600 hover:bg-blue-50 transition-colors"
-                    title="View History"
+                    title="Lihat Riwayat"
                   >
                     <History className="w-4 h-4" />
                   </button>

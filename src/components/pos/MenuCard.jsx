@@ -55,7 +55,7 @@ const MenuCard = ({ item, onAddToCart }) => {
         {!isAvailable && item.missingIngredients && (
           <div className="mt-2 flex items-start gap-1 text-xs text-red-600">
             <AlertCircle className="w-3 h-3 flex-shrink-0 mt-0.5" />
-            <span>Missing: {item.missingIngredients.join(', ')}</span>
+            <span>Bahan kurang: {item.missingIngredients.join(', ')}</span>
           </div>
         )}
       </div>
@@ -68,7 +68,7 @@ const MenuCard = ({ item, onAddToCart }) => {
             : 'bg-red-100 text-red-700'
         }`}
       >
-        {isAvailable ? 'Ready' : 'Out'}
+        {isAvailable ? 'Tersedia' : 'Habis'}
       </div>
     </div>
   );

@@ -80,21 +80,21 @@ const POSPage = () => {
     <MainLayout>
       {/* Page Header */}
       <PageHeader
-        title="Point of Sale"
-        subtitle="Process orders and transactions"
+        title="Kasir"
+        subtitle="Proses pesanan dan transaksi"
         actions={
           <div className="flex items-center gap-2">
             <div className="flex items-center gap-2 bg-gray-100 px-3 py-2 rounded-lg">
               <Hash className="w-4 h-4 text-gray-500" />
               <input
                 type="text"
-                placeholder="Table #"
+                placeholder="Meja #"
                 value={tableNumber}
                 onChange={(e) => setTableNumber(e.target.value)}
                 className="w-16 bg-transparent border-none focus:outline-none text-sm"
               />
             </div>
-            <span className="text-sm text-gray-500">Order #0784</span>
+            <span className="text-sm text-gray-500">Pesanan #0784</span>
           </div>
         }
       />
@@ -110,7 +110,7 @@ const POSPage = () => {
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
                   type="text"
-                  placeholder="Search menu..."
+                  placeholder="Cari menu..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -143,7 +143,7 @@ const POSPage = () => {
 
           {filteredItems.length === 0 && (
             <div className="text-center py-12 text-gray-500">
-              <p>No items found</p>
+              <p>Tidak ada item ditemukan</p>
             </div>
           )}
         </div>

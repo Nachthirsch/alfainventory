@@ -25,7 +25,7 @@ const CartSummary = ({
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <ShoppingCart className="w-5 h-5 text-gray-700" />
-            <h3 className="font-semibold text-gray-900">Order {orderNumber}</h3>
+            <h3 className="font-semibold text-gray-900">Pesanan {orderNumber}</h3>
           </div>
           {items.length > 0 && (
             <button
@@ -33,7 +33,7 @@ const CartSummary = ({
               className="text-sm text-red-600 hover:text-red-700 flex items-center gap-1"
             >
               <Trash2 className="w-4 h-4" />
-              Clear
+              Hapus
             </button>
           )}
         </div>
@@ -53,8 +53,8 @@ const CartSummary = ({
         ) : (
           <div className="flex flex-col items-center justify-center py-12 text-gray-400">
             <ShoppingCart className="w-12 h-12 mb-2" />
-            <p className="text-sm">Cart is empty</p>
-            <p className="text-xs">Add items to start an order</p>
+            <p className="text-sm">Keranjang kosong</p>
+            <p className="text-xs">Tambahkan item untuk memulai pesanan</p>
           </div>
         )}
       </div>
@@ -68,7 +68,7 @@ const CartSummary = ({
               <span className="text-gray-900">Rp {subtotal.toLocaleString('id-ID')}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-gray-600">Tax (10%)</span>
+              <span className="text-gray-600">Pajak (10%)</span>
               <span className="text-gray-900">Rp {tax.toLocaleString('id-ID')}</span>
             </div>
             <div className="flex justify-between text-lg font-bold pt-2 border-t border-gray-200">
@@ -82,7 +82,7 @@ const CartSummary = ({
             className="w-full min-h-12"
             onClick={onCheckout}
           >
-            Process Payment
+            Proses Pembayaran
           </Button>
         </div>
       )}

@@ -15,7 +15,7 @@ const StockMonitoringPanel = ({ title, items, businessUnit }) => {
           <p className="text-sm text-gray-500">{businessUnit}</p>
         </div>
         <button className="flex items-center gap-1 text-sm text-blue-600 hover:text-blue-700 font-medium">
-          View All
+          Lihat Semua
           <ChevronRight className="w-4 h-4" />
         </button>
       </div>
@@ -32,19 +32,19 @@ const StockMonitoringPanel = ({ title, items, businessUnit }) => {
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 bg-green-500 rounded-full" />
           <span className="text-xs text-gray-600">
-            Safe: {items.filter((i) => i.statusColor === 'green').length}
+            Aman: {items.filter((i) => i.statusColor === 'green').length}
           </span>
         </div>
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 bg-yellow-500 rounded-full" />
           <span className="text-xs text-gray-600">
-            Reorder: {items.filter((i) => i.statusColor === 'yellow').length}
+            Pesan Ulang: {items.filter((i) => i.statusColor === 'yellow').length}
           </span>
         </div>
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 bg-red-500 rounded-full" />
           <span className="text-xs text-gray-600">
-            Low: {items.filter((i) => i.statusColor === 'red').length}
+            Rendah: {items.filter((i) => i.statusColor === 'red').length}
           </span>
         </div>
       </div>

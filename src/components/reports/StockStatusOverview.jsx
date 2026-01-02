@@ -7,7 +7,7 @@ import { CheckCircle, AlertTriangle, XCircle } from 'lucide-react';
 const StockStatusOverview = ({ summary }) => {
   const statuses = [
     {
-      label: 'Safe Stock',
+      label: 'Stok Aman',
       count: summary.safeStock,
       percentage: summary.safePercentage,
       color: 'bg-green-500',
@@ -15,7 +15,7 @@ const StockStatusOverview = ({ summary }) => {
       textColor: 'text-green-600',
     },
     {
-      label: 'Reorder Soon',
+      label: 'Segera Pesan',
       count: summary.reorderSoon,
       percentage: summary.reorderPercentage,
       color: 'bg-yellow-500',
@@ -23,7 +23,7 @@ const StockStatusOverview = ({ summary }) => {
       textColor: 'text-yellow-600',
     },
     {
-      label: 'Low Stock',
+      label: 'Stok Rendah',
       count: summary.lowStock,
       percentage: summary.lowPercentage,
       color: 'bg-red-500',
@@ -65,7 +65,7 @@ const StockStatusOverview = ({ summary }) => {
       {/* Summary */}
       <div className="mt-4 pt-4 border-t border-gray-200 text-center">
         <p className="text-sm text-gray-600">
-          Total Items: <span className="font-semibold">{summary.totalItems}</span>
+          Total Item: <span className="font-semibold">{summary.totalItems}</span>
         </p>
       </div>
     </div>

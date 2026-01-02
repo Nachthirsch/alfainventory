@@ -9,7 +9,7 @@ const Select = ({
   error,
   helpText,
   options = [],
-  placeholder = 'Select an option',
+  placeholder = 'Pilih opsi',
   className = '',
   selectClassName = '',
   ...props

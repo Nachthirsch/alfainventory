@@ -23,10 +23,10 @@ const InventoryPage = () => {
   const [selectedItem, setSelectedItem] = useState(null);
 
   const tabs = [
-    { id: 'current', label: 'Current Stock', count: inventoryData.currentStock.length },
-    { id: 'stock-in', label: 'Stock In', count: inventoryData.stockInEntries.length },
-    { id: 'adjustments', label: 'Adjustments', count: inventoryData.stockAdjustments.length },
-    { id: 'history', label: 'History', count: inventoryData.stockHistory.length },
+    { id: 'current', label: 'Stok Saat Ini', count: inventoryData.currentStock.length },
+    { id: 'stock-in', label: 'Stok Masuk', count: inventoryData.stockInEntries.length },
+    { id: 'adjustments', label: 'Penyesuaian', count: inventoryData.stockAdjustments.length },
+    { id: 'history', label: 'Riwayat', count: inventoryData.stockHistory.length },
   ];
 
   // Filter current stock
@@ -52,12 +52,12 @@ const InventoryPage = () => {
     <MainLayout>
       {/* Page Header */}
       <PageHeader
-        title="Inventory Management"
-        subtitle="Track and manage stock levels"
+        title="Manajemen Inventaris"
+        subtitle="Lacak dan kelola level stok"
         actions={
           <>
             <Button variant="outline" icon={Download} size="sm">
-              Export CSV
+              Ekspor CSV
             </Button>
             <Button
               variant="outline"
@@ -65,7 +65,7 @@ const InventoryPage = () => {
               size="sm"
               onClick={() => setIsAdjustmentModalOpen(true)}
             >
-              Adjustment
+              Penyesuaian
             </Button>
             <Button
               variant="primary"
@@ -75,7 +75,7 @@ const InventoryPage = () => {
                 setIsStockInModalOpen(true);
               }}
             >
-              Stock In
+              Stok Masuk
             </Button>
           </>
         }
@@ -84,23 +84,23 @@ const InventoryPage = () => {
       {/* Summary Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
         <div className="bg-white rounded-lg border border-gray-200 p-4">
-          <p className="text-sm text-gray-500">Total Items</p>
+          <p className="text-sm text-gray-500">Total Item</p>
           <p className="text-2xl font-bold text-gray-900">
             {inventoryData.currentStock.length}
           </p>
         </div>
         <div className="bg-green-50 rounded-lg border border-green-200 p-4">
-          <p className="text-sm text-green-600">Safe Stock</p>
+          <p className="text-sm text-green-600">Stok Aman</p>
           <p className="text-2xl font-bold text-green-700">
             {inventoryData.currentStock.filter((i) => i.status === 'safe').length}
           </p>
         </div>
         <div className="bg-yellow-50 rounded-lg border border-yellow-200 p-4">
-          <p className="text-sm text-yellow-600">Reorder Soon</p>
+          <p className="text-sm text-yellow-600">Segera Pesan</p>
           <p className="text-2xl font-bold text-yellow-700">{reorderCount}</p>
         </div>
         <div className="bg-red-50 rounded-lg border border-red-200 p-4">
-          <p className="text-sm text-red-600">Low Stock</p>
+          <p className="text-sm text-red-600">Stok Rendah</p>
           <p className="text-2xl font-bold text-red-700">{lowStockCount}</p>
         </div>
       </div>
@@ -112,13 +112,13 @@ const InventoryPage = () => {
       <div className="flex flex-col sm:flex-row gap-3 mb-6">
         <div className="flex-1">
           <SearchInput
-            placeholder="Search items..."
+            placeholder="Cari item..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
         <Button variant="outline" icon={Filter}>
-          Filter
+          Saring
         </Button>
       </div>
 

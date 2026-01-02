@@ -15,11 +15,11 @@ const StockAdjustmentModal = ({ isOpen, onClose, item = null }) => {
   if (!isOpen) return null;
 
   const adjustmentTypes = [
-    { value: 'waste', label: 'Waste (Food spoiled/damaged)' },
-    { value: 'expired', label: 'Expired (Past expiration date)' },
-    { value: 'damaged', label: 'Damaged (Physical damage)' },
-    { value: 'missing', label: 'Missing (Inventory discrepancy)' },
-    { value: 'correction', label: 'Correction (Count error)' },
+    { value: 'waste', label: 'Limbah (Makanan basi/rusak)' },
+    { value: 'expired', label: 'Kadaluarsa (Melewati tanggal kedaluwarsa)' },
+    { value: 'damaged', label: 'Rusak (Kerusakan fisik)' },
+    { value: 'missing', label: 'Hilang (Ketidaksesuaian inventaris)' },
+    { value: 'correction', label: 'Koreksi (Kesalahan hitung)' },
   ];
 
   return (
@@ -32,7 +32,7 @@ const StockAdjustmentModal = ({ isOpen, onClose, item = null }) => {
           <div className="flex items-center justify-between p-4 border-b border-gray-200">
             <div className="flex items-center gap-2">
               <AlertTriangle className="w-5 h-5 text-yellow-600" />
-              <h3 className="text-lg font-semibold text-gray-900">Stock Adjustment</h3>
+              <h3 className="text-lg font-semibold text-gray-900">Penyesuaian Stok</h3>
             </div>
             <button
               onClick={onClose}
@@ -48,10 +48,10 @@ const StockAdjustmentModal = ({ isOpen, onClose, item = null }) => {
               <AlertTriangle className="w-5 h-5 text-yellow-600 flex-shrink-0" />
               <div>
                 <p className="text-sm font-medium text-yellow-800">
-                  Stock adjustments reduce inventory
+                  Penyesuaian stok mengurangi inventaris
                 </p>
                 <p className="text-xs text-yellow-700 mt-1">
-                  This action will decrease the stock count. Make sure to document the reason properly.
+                  Tindakan ini akan mengurangi jumlah stok. Pastikan untuk mendokumentasikan alasannya dengan benar.
                 </p>
               </div>
             </div>
@@ -66,7 +66,7 @@ const StockAdjustmentModal = ({ isOpen, onClose, item = null }) => {
                 <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
                   <span className="font-medium">{item.name}</span>
                   <span className="text-gray-500">
-                    (Current: {item.current} {item.unit})
+                    (Saat ini: {item.current} {item.unit})
                   </span>
                 </div>
               </div>
@@ -75,7 +75,7 @@ const StockAdjustmentModal = ({ isOpen, onClose, item = null }) => {
             {/* Adjustment Type */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Adjustment Type
+                Tipe Penyesuaian
               </label>
               <div className="space-y-2">
                 {adjustmentTypes.map((type) => (
@@ -106,14 +106,14 @@ const StockAdjustmentModal = ({ isOpen, onClose, item = null }) => {
             {/* Quantity */}
             <div className="grid grid-cols-2 gap-4">
               <Input
-                label="Quantity to Remove"
+                label="Jumlah yang Dihapus"
                 type="number"
                 placeholder="0"
                 value={formData.quantity}
                 onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
               />
               <Input
-                label="Unit"
+                label="Satuan"
                 value={item?.unit || ''}
                 disabled
                 inputClassName="bg-gray-100"
@@ -122,8 +122,8 @@ const StockAdjustmentModal = ({ isOpen, onClose, item = null }) => {
 
             {/* Reason */}
             <Textarea
-              label="Reason / Description"
-              placeholder="Describe why this adjustment is needed..."
+              label="Alasan / Deskripsi"
+              placeholder="Jelaskan mengapa penyesuaian ini diperlukan..."
               rows={3}
               value={formData.reason}
               onChange={(e) => setFormData({ ...formData, reason: e.target.value })}
@@ -132,14 +132,14 @@ const StockAdjustmentModal = ({ isOpen, onClose, item = null }) => {
             {/* Photo Upload */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Photo Evidence (Optional)
+                Foto Bukti (Opsional)
               </label>
               <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-gray-400 transition-colors cursor-pointer">
                 <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
                 <p className="text-sm text-gray-600">
-                  Click to upload or drag and drop
+                  Klik untuk unggah atau seret dan lepas
                 </p>
-                <p className="text-xs text-gray-500 mt-1">PNG, JPG up to 5MB</p>
+                <p className="text-xs text-gray-500 mt-1">PNG, JPG maksimal 5MB</p>
               </div>
             </div>
           </div>
@@ -147,9 +147,9 @@ const StockAdjustmentModal = ({ isOpen, onClose, item = null }) => {
           {/* Footer */}
           <div className="flex items-center justify-end gap-3 p-4 border-t border-gray-200">
             <Button variant="outline" onClick={onClose}>
-              Cancel
+              Batal
             </Button>
-            <Button variant="danger">Confirm Adjustment</Button>
+            <Button variant="danger">Konfirmasi Penyesuaian</Button>
           </div>
         </div>
       </div>

@@ -10,12 +10,12 @@ const StockInTable = ({ entries }) => {
       <Table>
         <TableHead>
           <TableRow hover={false}>
-            <TableHeader>Date</TableHeader>
+            <TableHeader>Tanggal</TableHeader>
             <TableHeader>Item</TableHeader>
-            <TableHeader align="right">Quantity</TableHeader>
-            <TableHeader>Supplier</TableHeader>
-            <TableHeader align="right">Cost</TableHeader>
-            <TableHeader>Entry By</TableHeader>
+            <TableHeader align="right">Jumlah</TableHeader>
+            <TableHeader>Pemasok</TableHeader>
+            <TableHeader align="right">Biaya</TableHeader>
+            <TableHeader>Diinput Oleh</TableHeader>
           </TableRow>
         </TableHead>
         <TableBody>

@@ -12,7 +12,7 @@ const SalesSummary = ({ summary }) => {
         <div className="bg-blue-50 rounded-lg p-4">
           <div className="flex items-center gap-2 text-blue-600 mb-1">
             <DollarSign className="w-4 h-4" />
-            <span className="text-sm font-medium">Total Revenue</span>
+            <span className="text-sm font-medium">Total Pendapatan</span>
           </div>
           <p className="text-xl font-bold text-gray-900">
             Rp {summary.totalRevenue.toLocaleString('id-ID')}
@@ -21,14 +21,14 @@ const SalesSummary = ({ summary }) => {
         <div className="bg-green-50 rounded-lg p-4">
           <div className="flex items-center gap-2 text-green-600 mb-1">
             <ShoppingCart className="w-4 h-4" />
-            <span className="text-sm font-medium">Transactions</span>
+            <span className="text-sm font-medium">Transaksi</span>
           </div>
           <p className="text-xl font-bold text-gray-900">{summary.totalTransactions}</p>
         </div>
         <div className="bg-purple-50 rounded-lg p-4">
           <div className="flex items-center gap-2 text-purple-600 mb-1">
             <TrendingUp className="w-4 h-4" />
-            <span className="text-sm font-medium">Avg. Order</span>
+            <span className="text-sm font-medium">Rata-rata Pesanan</span>
           </div>
           <p className="text-xl font-bold text-gray-900">
             Rp {summary.averageOrder.toLocaleString('id-ID')}
@@ -38,7 +38,7 @@ const SalesSummary = ({ summary }) => {
 
       {/* Business Unit Breakdown */}
       <div className="space-y-4">
-        <h4 className="font-medium text-gray-900">Revenue by Business Unit</h4>
+        <h4 className="font-medium text-gray-900">Pendapatan per Unit Bisnis</h4>
         
         {/* Bakso Malang */}
         <div>

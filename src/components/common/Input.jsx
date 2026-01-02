@@ -42,7 +42,7 @@ const Input = ({
 /**
  * Search Input component
  */
-export const SearchInput = ({ placeholder = 'Search...', className = '', ...props }) => (
+export const SearchInput = ({ placeholder = 'Cari...', className = '', ...props }) => (
   <Input
     icon={Search}
     placeholder={placeholder}

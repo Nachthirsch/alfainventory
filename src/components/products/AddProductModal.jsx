@@ -21,11 +21,11 @@ const AddProductModal = ({ isOpen, onClose, product = null }) => {
   if (!isOpen) return null;
 
   const categoryOptions = [
-    { value: 'Food', label: 'Food' },
-    { value: 'Beverage', label: 'Beverage' },
-    { value: 'Snack', label: 'Snack' },
-    { value: 'Service', label: 'Service' },
-    { value: 'Cleaning', label: 'Cleaning' },
+    { value: 'Makanan', label: 'Makanan' },
+    { value: 'Minuman', label: 'Minuman' },
+    { value: 'Camilan', label: 'Camilan' },
+    { value: 'Layanan', label: 'Layanan' },
+    { value: 'Pembersih', label: 'Pembersih' },
   ];
 
   const businessUnitOptions = [
@@ -72,7 +72,7 @@ const AddProductModal = ({ isOpen, onClose, product = null }) => {
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b border-gray-200">
             <h3 className="text-lg font-semibold text-gray-900">
-              {product ? 'Edit Product' : 'Add New Product'}
+              {product ? 'Edit Produk' : 'Tambah Produk Baru'}
             </h3>
             <button
               onClick={onClose}
@@ -87,7 +87,7 @@ const AddProductModal = ({ isOpen, onClose, product = null }) => {
             {/* Product Type Toggle */}
             <div className="mb-6">
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Product Type
+                Tipe Produk
               </label>
               <div className="flex gap-2">
                 <button
@@ -99,8 +99,8 @@ const AddProductModal = ({ isOpen, onClose, product = null }) => {
                   }`}
                 >
                   <div className="text-xl mb-1">✅</div>
-                  <div className="font-medium">Simple Product</div>
-                  <div className="text-xs text-gray-500">Single item, track stock directly</div>
+                  <div className="font-medium">Produk Sederhana</div>
+                  <div className="text-xs text-gray-500">Item tunggal, lacak stok langsung</div>
                 </button>
                 <button
                   onClick={() => setProductType('recipe')}
@@ -111,8 +111,8 @@ const AddProductModal = ({ isOpen, onClose, product = null }) => {
                   }`}
                 >
                   <div className="text-xl mb-1">📝</div>
-                  <div className="font-medium">Recipe Product</div>
-                  <div className="text-xs text-gray-500">Made from multiple ingredients</div>
+                  <div className="font-medium">Produk Resep</div>
+                  <div className="text-xs text-gray-500">Dibuat dari beberapa bahan</div>
                 </button>
               </div>
             </div>
@@ -120,21 +120,21 @@ const AddProductModal = ({ isOpen, onClose, product = null }) => {
             {/* Basic Info */}
             <div className="space-y-4">
               <Input
-                label="Product Name"
-                placeholder="Enter product name"
+                label="Nama Produk"
+                placeholder="Masukkan nama produk"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               />
 
               <div className="grid grid-cols-2 gap-4">
                 <Select
-                  label="Category"
+                  label="Kategori"
                   options={categoryOptions}
                   value={formData.category}
                   onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                 />
                 <Select
-                  label="Business Unit"
+                  label="Unit Bisnis"
                   options={businessUnitOptions}
                   value={formData.businessUnit}
                   onChange={(e) => setFormData({ ...formData, businessUnit: e.target.value })}
@@ -142,7 +142,7 @@ const AddProductModal = ({ isOpen, onClose, product = null }) => {
               </div>
 
               <Input
-                label="Selling Price (Rp)"
+                label="Harga Jual (Rp)"
                 type="number"
                 placeholder="0"
                 value={formData.price}
@@ -154,14 +154,14 @@ const AddProductModal = ({ isOpen, onClose, product = null }) => {
             {productType === 'recipe' && (
               <div className="mt-6 pt-6 border-t border-gray-200">
                 <div className="flex items-center justify-between mb-4">
-                  <h4 className="font-semibold text-gray-900">Recipe Ingredients</h4>
+                  <h4 className="font-semibold text-gray-900">Bahan Resep</h4>
                   <Button
                     variant="outline"
                     size="sm"
                     icon={Plus}
                     onClick={addIngredientRow}
                   >
-                    Add Ingredient
+                    Tambah Bahan
                   </Button>
                 </div>
 
@@ -170,19 +170,19 @@ const AddProductModal = ({ isOpen, onClose, product = null }) => {
                     <div key={index} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
                       <div className="flex-1 grid grid-cols-3 gap-3">
                         <Select
-                          placeholder="Select ingredient"
+                          placeholder="Pilih bahan"
                           options={ingredientOptions}
                           value={ingredient.ingredientId}
                           onChange={(e) => updateIngredient(index, 'ingredientId', e.target.value)}
                         />
                         <Input
                           type="number"
-                          placeholder="Quantity"
+                          placeholder="Jumlah"
                           value={ingredient.quantity}
                           onChange={(e) => updateIngredient(index, 'quantity', e.target.value)}
                         />
                         <Input
-                          placeholder="Unit"
+                          placeholder="Satuan"
                           value={ingredient.unit}
                           disabled
                           inputClassName="bg-gray-100"
@@ -203,11 +203,11 @@ const AddProductModal = ({ isOpen, onClose, product = null }) => {
                 {/* Estimated Servings */}
                 <div className="mt-4 p-3 bg-blue-50 rounded-lg">
                   <p className="text-sm text-blue-800">
-                    <span className="font-medium">Estimated Servings Possible:</span>{' '}
-                    {recipeIngredients[0]?.ingredientId ? '~45 servings' : 'Add ingredients to calculate'}
+                    <span className="font-medium">Estimasi Porsi yang Dapat Dibuat:</span>{' '}
+                    {recipeIngredients[0]?.ingredientId ? '~45 porsi' : 'Tambahkan bahan untuk menghitung'}
                   </p>
                   <p className="text-xs text-blue-600 mt-1">
-                    Based on current stock levels
+                    Berdasarkan level stok saat ini
                   </p>
                 </div>
               </div>
@@ -217,10 +217,10 @@ const AddProductModal = ({ isOpen, onClose, product = null }) => {
           {/* Footer */}
           <div className="flex items-center justify-end gap-3 p-4 border-t border-gray-200">
             <Button variant="outline" onClick={onClose}>
-              Cancel
+              Batal
             </Button>
             <Button variant="primary">
-              {product ? 'Save Changes' : 'Add Product'}
+              {product ? 'Simpan Perubahan' : 'Tambah Produk'}
             </Button>
           </div>
         </div>

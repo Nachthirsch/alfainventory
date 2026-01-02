@@ -12,12 +12,12 @@ const ProductTable = ({ products, onView, onEdit, onDelete }) => {
       <Table>
         <TableHead>
           <TableRow hover={false}>
-            <TableHeader>Product</TableHeader>
-            <TableHeader>Type</TableHeader>
-            <TableHeader>Category</TableHeader>
-            <TableHeader>Business Unit</TableHeader>
-            <TableHeader align="right">Price</TableHeader>
-            <TableHeader align="center">Actions</TableHeader>
+            <TableHeader>Produk</TableHeader>
+            <TableHeader>Tipe</TableHeader>
+            <TableHeader>Kategori</TableHeader>
+            <TableHeader>Unit Bisnis</TableHeader>
+            <TableHeader align="right">Harga</TableHeader>
+            <TableHeader align="center">Aksi</TableHeader>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -34,7 +34,7 @@ const ProductTable = ({ products, onView, onEdit, onDelete }) => {
                   variant={product.type === 'recipe' ? 'purple' : 'info'}
                   size="sm"
                 >
-                  {product.type === 'recipe' ? '📝 Recipe' : '✅ Simple'}
+                  {product.type === 'recipe' ? '📝 Resep' : '✅ Sederhana'}
                 </Badge>
               </TableCell>
               <TableCell>
@@ -53,7 +53,7 @@ const ProductTable = ({ products, onView, onEdit, onDelete }) => {
                   <button
                     onClick={() => onView(product)}
                     className="p-1.5 rounded-lg text-gray-500 hover:text-blue-600 hover:bg-blue-50 transition-colors"
-                    title="View Details"
+                    title="Lihat Detail"
                   >
                     <Eye className="w-4 h-4" />
                   </button>
@@ -67,7 +67,7 @@ const ProductTable = ({ products, onView, onEdit, onDelete }) => {
                   <button
                     onClick={() => onDelete(product)}
                     className="p-1.5 rounded-lg text-gray-500 hover:text-red-600 hover:bg-red-50 transition-colors"
-                    title="Delete"
+                    title="Hapus"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>

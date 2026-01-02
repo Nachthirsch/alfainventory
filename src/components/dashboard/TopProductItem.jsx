@@ -31,7 +31,7 @@ const TopProductItem = ({ product }) => {
         <p className="text-sm font-medium text-gray-900 truncate">{product.name}</p>
         <div className="flex items-center gap-1 text-xs text-gray-500">
           <TrendingUp className="w-3 h-3" />
-          <span>{product.quantity} sold</span>
+          <span>{product.quantity} terjual</span>
         </div>
       </div>
 

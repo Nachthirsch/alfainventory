@@ -16,9 +16,9 @@ const ProductsPage = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const tabs = [
-    { id: 'all', label: 'All Products', count: productsData.productsList.length },
-    { id: 'recipe', label: 'Recipe Products', count: productsData.productsList.filter((p) => p.type === 'recipe').length },
-    { id: 'simple', label: 'Simple Products', count: productsData.productsList.filter((p) => p.type === 'simple').length },
+    { id: 'all', label: 'Semua Produk', count: productsData.productsList.length },
+    { id: 'recipe', label: 'Produk Resep', count: productsData.productsList.filter((p) => p.type === 'recipe').length },
+    { id: 'simple', label: 'Produk Sederhana', count: productsData.productsList.filter((p) => p.type === 'simple').length },
   ];
 
   // Filter products
@@ -47,12 +47,12 @@ const ProductsPage = () => {
     <MainLayout>
       {/* Page Header */}
       <PageHeader
-        title="Master Products"
-        subtitle="Manage products and recipes"
+        title="Master Produk"
+        subtitle="Kelola produk dan resep"
         actions={
           <>
             <Button variant="outline" icon={Download} size="sm">
-              Export
+              Ekspor
             </Button>
             <Button
               variant="primary"
@@ -62,7 +62,7 @@ const ProductsPage = () => {
                 setIsAddModalOpen(true);
               }}
             >
-              Add Product
+              Tambah Produk
             </Button>
           </>
         }
@@ -75,13 +75,13 @@ const ProductsPage = () => {
       <div className="flex flex-col sm:flex-row gap-3 mb-6">
         <div className="flex-1">
           <SearchInput
-            placeholder="Search products..."
+            placeholder="Cari produk..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
         <Button variant="outline" icon={Filter}>
-          Filter
+          Saring
         </Button>
       </div>
 

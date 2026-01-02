@@ -64,14 +64,14 @@ const PaymentModal = ({
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <CheckCircle className="w-8 h-8 text-green-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900">Payment Successful!</h3>
-              <p className="text-gray-500 mt-2">Order completed successfully</p>
+              <h3 className="text-xl font-semibold text-gray-900">Pembayaran Berhasil!</h3>
+              <p className="text-gray-500 mt-2">Pesanan berhasil diselesaikan</p>
             </div>
           ) : (
             <>
               {/* Header */}
               <div className="flex items-center justify-between p-4 border-b border-gray-200">
-                <h3 className="text-lg font-semibold text-gray-900">Payment</h3>
+                <h3 className="text-lg font-semibold text-gray-900">Pembayaran</h3>
                 <button
                   onClick={onClose}
                   className="p-1 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100"
@@ -84,7 +84,7 @@ const PaymentModal = ({
               <div className="p-4">
                 {/* Total Display */}
                 <div className="text-center mb-6">
-                  <p className="text-sm text-gray-500">Total Amount</p>
+                  <p className="text-sm text-gray-500">Total Jumlah</p>
                   <p className="text-3xl font-bold text-blue-600">
                     Rp {total.toLocaleString('id-ID')}
                   </p>
@@ -93,7 +93,7 @@ const PaymentModal = ({
                 {/* Payment Methods */}
                 <div className="mb-6">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Payment Method
+                    Metode Pembayaran
                   </label>
                   <div className="grid grid-cols-2 gap-2">
                     {paymentMethods.map((method) => {
@@ -136,13 +136,13 @@ const PaymentModal = ({
                 {selectedMethod === 'cash' && (
                   <div className="mb-6">
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Amount Received
+                      Jumlah Diterima
                     </label>
                     <input
                       type="text"
                       value={amountReceived}
                       onChange={(e) => setAmountReceived(e.target.value)}
-                      placeholder="Enter amount"
+                      placeholder="Masukkan jumlah"
                       className="w-full px-4 py-3 text-lg border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     />
 
@@ -163,14 +163,14 @@ const PaymentModal = ({
                     {numericAmount > 0 && (
                       <div className="mt-4 p-3 bg-gray-50 rounded-lg">
                         <div className="flex justify-between text-sm">
-                          <span className="text-gray-600">Change</span>
+                          <span className="text-gray-600">Kembalian</span>
                           <span
                             className={`font-bold ${
                               change >= 0 ? 'text-green-600' : 'text-red-600'
                             }`}
                           >
                             Rp {Math.abs(change).toLocaleString('id-ID')}
-                            {change < 0 && ' (Insufficient)'}
+                            {change < 0 && ' (Kurang)'}
                           </span>
                         </div>
                       </div>
@@ -187,7 +187,7 @@ const PaymentModal = ({
                   onClick={handleConfirm}
                   disabled={!canProcess || isProcessing}
                 >
-                  {isProcessing ? 'Processing...' : 'Confirm Payment'}
+                  {isProcessing ? 'Memproses...' : 'Konfirmasi Pembayaran'}
                 </Button>
               </div>
             </>

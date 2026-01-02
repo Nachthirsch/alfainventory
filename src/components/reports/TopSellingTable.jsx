@@ -11,16 +11,16 @@ const TopSellingTable = ({ products }) => {
         <thead>
           <tr className="border-b border-gray-200">
             <th className="text-center px-4 py-3 text-xs font-semibold text-gray-600 uppercase w-16">
-              Rank
+              Peringkat
             </th>
             <th className="text-left px-4 py-3 text-xs font-semibold text-gray-600 uppercase">
-              Product
+              Produk
             </th>
             <th className="text-right px-4 py-3 text-xs font-semibold text-gray-600 uppercase">
-              Qty Sold
+              Qty Terjual
             </th>
             <th className="text-right px-4 py-3 text-xs font-semibold text-gray-600 uppercase">
-              Revenue
+              Pendapatan
             </th>
           </tr>
         </thead>

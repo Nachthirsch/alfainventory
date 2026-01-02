@@ -22,25 +22,25 @@ const ReportsPage = () => {
   const [dateRange, setDateRange] = useState('this-month');
 
   const tabs = [
-    { id: 'stock', label: 'Stock Reports' },
-    { id: 'sales', label: 'Sales Reports' },
-    { id: 'financial', label: 'Financial Reports' },
+    { id: 'stock', label: 'Laporan Stok' },
+    { id: 'sales', label: 'Laporan Penjualan' },
+    { id: 'financial', label: 'Laporan Keuangan' },
   ];
 
   const dateRangeOptions = [
-    { value: 'today', label: 'Today' },
-    { value: 'this-week', label: 'This Week' },
-    { value: 'this-month', label: 'This Month' },
-    { value: 'last-month', label: 'Last Month' },
-    { value: 'custom', label: 'Custom Range' },
+    { value: 'today', label: 'Hari Ini' },
+    { value: 'this-week', label: 'Minggu Ini' },
+    { value: 'this-month', label: 'Bulan Ini' },
+    { value: 'last-month', label: 'Bulan Lalu' },
+    { value: 'custom', label: 'Rentang Kustom' },
   ];
 
   return (
     <MainLayout>
       {/* Page Header */}
       <PageHeader
-        title="Reports"
-        subtitle="Analytics and business insights"
+        title="Laporan"
+        subtitle="Analitik dan wawasan bisnis"
         actions={
           <div className="flex items-center gap-3">
             <Select
@@ -50,10 +50,10 @@ const ReportsPage = () => {
               selectClassName="w-40"
             />
             <Button variant="outline" icon={Printer} size="sm">
-              Print
+              Cetak
             </Button>
             <Button variant="outline" icon={Download} size="sm">
-              Export
+              Ekspor
             </Button>
           </div>
         }
@@ -61,10 +61,10 @@ const ReportsPage = () => {
 
       {/* Business Unit Filter */}
       <div className="flex items-center gap-4 mb-6 p-4 bg-white rounded-lg border border-gray-200">
-        <span className="text-sm font-medium text-gray-700">Business Unit:</span>
+        <span className="text-sm font-medium text-gray-700">Unit Bisnis:</span>
         <div className="flex gap-2">
           <button className="px-4 py-2 text-sm font-medium rounded-lg bg-blue-600 text-white">
-            All Units
+            Semua Unit
           </button>
           <button className="px-4 py-2 text-sm font-medium rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200">
             Bakso Malang
@@ -82,30 +82,30 @@ const ReportsPage = () => {
       {activeTab === 'stock' && (
         <>
           {/* Stock Status Overview */}
-          <ReportCard title="Stock Status Overview" description="Current inventory health status">
+          <ReportCard title="Ikhtisar Status Stok" description="Status kesehatan inventaris saat ini">
             <StockStatusOverview summary={reportsData.stockSummary} />
           </ReportCard>
 
           {/* Critical Stock Items */}
           <ReportCard
-            title="Critical Stock Items"
-            description="Items requiring immediate attention"
+            title="Item Stok Kritis"
+            description="Item yang memerlukan perhatian segera"
           >
             <CriticalStockTable items={reportsData.criticalItems} />
           </ReportCard>
 
           {/* Stock Movement Analysis */}
           <ReportCard
-            title="Stock Movement Analysis"
-            description="Ingredient usage vs restocking this period"
+            title="Analisis Pergerakan Stok"
+            description="Penggunaan bahan vs pengisian ulang periode ini"
           >
             <StockMovementTable movements={reportsData.topUsedIngredients} />
           </ReportCard>
 
           {/* Stock Valuation */}
           <ReportCard
-            title="Stock Valuation"
-            description="Total value of current inventory"
+            title="Valuasi Stok"
+            description="Total nilai inventaris saat ini"
           >
             <StockValuation valuation={reportsData.stockValuation} />
           </ReportCard>
@@ -116,20 +116,20 @@ const ReportsPage = () => {
       {activeTab === 'sales' && (
         <>
           {/* Sales Summary */}
-          <ReportCard title="Sales Summary" description="Revenue and transaction overview">
+          <ReportCard title="Ringkasan Penjualan" description="Ikhtisar pendapatan dan transaksi">
             <SalesSummary summary={reportsData.salesSummary} />
           </ReportCard>
 
           {/* Top Selling Products */}
           <ReportCard
-            title="Top Selling Products"
-            description="Best performing products this period"
+            title="Produk Terlaris"
+            description="Produk dengan performa terbaik periode ini"
           >
             <TopSellingTable products={reportsData.topSellingProducts} />
           </ReportCard>
 
           {/* Sales Trend Chart (Mock) */}
-          <ReportCard title="Sales Trend" description="Daily sales over the period">
+          <ReportCard title="Tren Penjualan" description="Penjualan harian selama periode">
             <div className="h-64 flex items-center justify-center bg-gradient-to-t from-blue-50 to-white rounded-lg">
               <div className="text-center text-gray-400">
                 <div className="flex items-end justify-center gap-2 h-40 mb-4">
@@ -141,7 +141,7 @@ const ReportsPage = () => {
                     />
                   ))}
                 </div>
-                <p className="text-sm">Sales trend visualization</p>
+                <p className="text-sm">Visualisasi tren penjualan</p>
               </div>
             </div>
           </ReportCard>
@@ -153,8 +153,8 @@ const ReportsPage = () => {
         <>
           {/* Profit & Loss Statement */}
           <ReportCard
-            title="Profit & Loss Statement"
-            description="Financial performance summary"
+            title="Laporan Laba Rugi"
+            description="Ringkasan kinerja keuangan"
           >
             <ProfitLossStatement data={reportsData.profitLoss} />
           </ReportCard>
@@ -166,12 +166,12 @@ const ReportsPage = () => {
                 <span className="text-lg">💡</span>
               </div>
               <div>
-                <h4 className="font-semibold text-blue-900 mb-1">Insights</h4>
+                <h4 className="font-semibold text-blue-900 mb-1">Wawasan</h4>
                 <ul className="text-sm text-blue-800 space-y-1">
-                  <li>• Gross margin is healthy at {reportsData.profitLoss.grossMargin}%</li>
-                  <li>• Net profit margin of {reportsData.profitLoss.netMargin}% is above industry average</li>
-                  <li>• Consider optimizing COGS to improve margins further</li>
-                  <li>• Operating expenses are within expected range</li>
+                  <li>• Margin kotor sehat pada {reportsData.profitLoss.grossMargin}%</li>
+                  <li>• Margin laba bersih {reportsData.profitLoss.netMargin}% di atas rata-rata industri</li>
+                  <li>• Pertimbangkan mengoptimalkan HPP untuk meningkatkan margin lebih lanjut</li>
+                  <li>• Biaya operasional dalam rentang yang diharapkan</li>
                 </ul>
               </div>
             </div>

@@ -19,7 +19,7 @@ const ReceiptModal = ({ isOpen, onClose, orderData }) => {
         <div className="relative bg-white rounded-lg shadow-xl w-full max-w-sm">
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b border-gray-200">
-            <h3 className="text-lg font-semibold text-gray-900">Receipt</h3>
+            <h3 className="text-lg font-semibold text-gray-900">Struk</h3>
             <button
               onClick={onClose}
               className="p-1 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100"
@@ -40,11 +40,11 @@ const ReceiptModal = ({ isOpen, onClose, orderData }) => {
             {/* Order Info */}
             <div className="py-3 border-b border-dashed border-gray-300 text-sm">
               <div className="flex justify-between">
-                <span className="text-gray-600">Order No:</span>
+                <span className="text-gray-600">No. Pesanan:</span>
                 <span className="font-medium">{orderNumber}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">Date:</span>
+                <span className="text-gray-600">Tanggal:</span>
                 <span>{currentDate}</span>
               </div>
             </div>
@@ -73,7 +73,7 @@ const ReceiptModal = ({ isOpen, onClose, orderData }) => {
                 <span>Rp {subtotal.toLocaleString('id-ID')}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">Tax (10%)</span>
+                <span className="text-gray-600">Pajak (10%)</span>
                 <span>Rp {tax.toLocaleString('id-ID')}</span>
               </div>
               <div className="flex justify-between font-bold text-base pt-2 border-t border-gray-200">
@@ -83,11 +83,11 @@ const ReceiptModal = ({ isOpen, onClose, orderData }) => {
               {paymentMethod === 'cash' && (
                 <>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Cash</span>
+                    <span className="text-gray-600">Tunai</span>
                     <span>Rp {(total + change).toLocaleString('id-ID')}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Change</span>
+                    <span className="text-gray-600">Kembalian</span>
                     <span>Rp {change.toLocaleString('id-ID')}</span>
                   </div>
                 </>
@@ -98,11 +98,11 @@ const ReceiptModal = ({ isOpen, onClose, orderData }) => {
             <div className="text-center pt-4 border-t border-dashed border-gray-300">
               <div className="flex items-center justify-center gap-1 text-green-600 mb-2">
                 <CheckCircle className="w-4 h-4" />
-                <span className="text-sm font-medium">Payment Complete</span>
+                <span className="text-sm font-medium">Pembayaran Selesai</span>
               </div>
-              <p className="text-xs text-gray-500">Thank you for your purchase!</p>
+              <p className="text-xs text-gray-500">Terima kasih atas pembelian Anda!</p>
               <p className="text-xs text-gray-400 mt-1">
-                Keep this receipt for your records
+                Simpan struk ini sebagai bukti transaksi
               </p>
             </div>
           </div>
@@ -110,10 +110,10 @@ const ReceiptModal = ({ isOpen, onClose, orderData }) => {
           {/* Actions */}
           <div className="p-4 border-t border-gray-200 flex gap-2">
             <Button variant="outline" className="flex-1" icon={Printer}>
-              Print
+              Cetak
             </Button>
             <Button variant="primary" className="flex-1" icon={Download}>
-              Download
+              Unduh
             </Button>
           </div>
         </div>

@@ -43,13 +43,13 @@ const StatCard = ({ stat }) => {
               ) : (
                 <TrendingDown className="w-4 h-4" />
               )}
-              <span>{stat.change} from yesterday</span>
+              <span>{stat.change} dari kemarin</span>
             </div>
           )}
           {isAlert && (
             <div className="flex items-center gap-1 text-sm text-red-600">
               <AlertTriangle className="w-4 h-4" />
-              <span>Needs attention</span>
+              <span>Perlu perhatian</span>
             </div>
           )}
         </div>

@@ -7,8 +7,8 @@ import Button from './Button';
  */
 const EmptyState = ({
   icon,
-  title = 'No data found',
-  description = 'Get started by creating your first item.',
+  title = 'Data tidak ditemukan',
+  description = 'Mulai dengan membuat item pertama Anda.',
   actionLabel,
   onAction,
   className = '',

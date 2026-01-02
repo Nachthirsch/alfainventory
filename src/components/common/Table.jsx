@@ -110,7 +110,7 @@ export const TablePagination = ({
   return (
     <div className="flex items-center justify-between px-4 py-3 border-t border-gray-200">
       <div className="text-sm text-gray-600">
-        Showing {startItem} to {endItem} of {totalItems} results
+        Menampilkan {startItem} sampai {endItem} dari {totalItems} hasil
       </div>
       <div className="flex items-center gap-2">
         <button
@@ -121,7 +121,7 @@ export const TablePagination = ({
           <ChevronLeft className="w-5 h-5" />
         </button>
         <span className="px-3 py-1 text-sm">
-          Page {currentPage} of {totalPages}
+          Halaman {currentPage} dari {totalPages}
         </span>
         <button
           onClick={() => onPageChange(currentPage + 1)}

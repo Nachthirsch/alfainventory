@@ -24,12 +24,12 @@ const StockAdjustmentsTable = ({ adjustments }) => {
       <Table>
         <TableHead>
           <TableRow hover={false}>
-            <TableHeader>Date</TableHeader>
+            <TableHeader>Tanggal</TableHeader>
             <TableHeader>Item</TableHeader>
-            <TableHeader align="right">Quantity</TableHeader>
-            <TableHeader align="center">Type</TableHeader>
-            <TableHeader>Reason</TableHeader>
-            <TableHeader>By</TableHeader>
+            <TableHeader align="right">Jumlah</TableHeader>
+            <TableHeader align="center">Tipe</TableHeader>
+            <TableHeader>Alasan</TableHeader>
+            <TableHeader>Oleh</TableHeader>
           </TableRow>
         </TableHead>
         <TableBody>

@@ -12,21 +12,21 @@ const StockHistoryTable = ({ history }) => {
       case 'in':
         return {
           icon: '📥',
-          label: 'Stock In',
+          label: 'Stok Masuk',
           variant: 'success',
           textColor: 'text-green-600',
         };
       case 'sale':
         return {
           icon: '🛒',
-          label: 'Sale',
+          label: 'Penjualan',
           variant: 'info',
           textColor: 'text-blue-600',
         };
       case 'adjustment':
         return {
           icon: '🗑️',
-          label: 'Adjustment',
+          label: 'Penyesuaian',
           variant: 'warning',
           textColor: 'text-yellow-600',
         };
@@ -45,12 +45,12 @@ const StockHistoryTable = ({ history }) => {
       <Table>
         <TableHead>
           <TableRow hover={false}>
-            <TableHeader>Date & Time</TableHeader>
+            <TableHeader>Tanggal & Waktu</TableHeader>
             <TableHeader>Item</TableHeader>
-            <TableHeader align="center">Type</TableHeader>
-            <TableHeader align="right">Quantity</TableHeader>
-            <TableHeader align="right">Balance</TableHeader>
-            <TableHeader>Notes</TableHeader>
+            <TableHeader align="center">Tipe</TableHeader>
+            <TableHeader align="right">Jumlah</TableHeader>
+            <TableHeader align="right">Saldo</TableHeader>
+            <TableHeader>Catatan</TableHeader>
           </TableRow>
         </TableHead>
         <TableBody>

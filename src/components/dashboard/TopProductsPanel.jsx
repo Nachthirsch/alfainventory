@@ -13,11 +13,11 @@ const TopProductsPanel = ({ products }) => {
         <div className="flex items-center gap-2">
           <Award className="w-5 h-5 text-gray-700" />
           <h3 className="text-lg font-semibold text-gray-900">
-            Top Selling Products
+            Produk Terlaris
           </h3>
         </div>
         <button className="flex items-center gap-1 text-sm text-blue-600 hover:text-blue-700 font-medium">
-          View Report
+          Lihat Laporan
           <ChevronRight className="w-4 h-4" />
         </button>
       </div>

@@ -26,7 +26,7 @@ const ProductDetailModal = ({ isOpen, onClose, product }) => {
                 <h3 className="text-lg font-semibold text-gray-900">{product.name}</h3>
                 <div className="flex items-center gap-2 mt-1">
                   <Badge variant={isRecipe ? 'purple' : 'info'} size="sm">
-                    {isRecipe ? '📝 Recipe Product' : '✅ Simple Product'}
+                    {isRecipe ? '📝 Produk Resep' : '✅ Produk Sederhana'}
                   </Badge>
                   <span className="text-sm text-gray-500">{product.category}</span>
                 </div>
@@ -47,7 +47,7 @@ const ProductDetailModal = ({ isOpen, onClose, product }) => {
               <div className="bg-blue-50 rounded-lg p-4">
                 <div className="flex items-center gap-2 text-blue-600 mb-1">
                   <DollarSign className="w-4 h-4" />
-                  <span className="text-sm font-medium">Price</span>
+                  <span className="text-sm font-medium">Harga</span>
                 </div>
                 <p className="text-xl font-bold text-gray-900">
                   Rp {product.price.toLocaleString('id-ID')}
@@ -58,7 +58,7 @@ const ProductDetailModal = ({ isOpen, onClose, product }) => {
                   <div className="bg-green-50 rounded-lg p-4">
                     <div className="flex items-center gap-2 text-green-600 mb-1">
                       <TrendingUp className="w-4 h-4" />
-                      <span className="text-sm font-medium">Total Sold</span>
+                      <span className="text-sm font-medium">Total Terjual</span>
                     </div>
                     <p className="text-xl font-bold text-gray-900">
                       {recipeDetail.salesStats.totalSold}x
@@ -67,13 +67,13 @@ const ProductDetailModal = ({ isOpen, onClose, product }) => {
                   <div className="bg-purple-50 rounded-lg p-4">
                     <div className="flex items-center gap-2 text-purple-600 mb-1">
                       <Package className="w-4 h-4" />
-                      <span className="text-sm font-medium">Max Servings</span>
+                      <span className="text-sm font-medium">Porsi Maksimal</span>
                     </div>
                     <p className="text-xl font-bold text-gray-900">
                       {recipeDetail.maxServings}
                     </p>
                     <p className="text-xs text-gray-500 mt-1">
-                      Limited by: {recipeDetail.limitingIngredient}
+                      Dibatasi oleh: {recipeDetail.limitingIngredient}
                     </p>
                   </div>
                 </>
@@ -83,19 +83,19 @@ const ProductDetailModal = ({ isOpen, onClose, product }) => {
             {/* Recipe Ingredients Table */}
             {isRecipe && (
               <div className="mb-6">
-                <h4 className="font-semibold text-gray-900 mb-3">Recipe Composition</h4>
+                <h4 className="font-semibold text-gray-900 mb-3">Komposisi Resep</h4>
                 <div className="bg-gray-50 rounded-lg overflow-hidden">
                   <table className="w-full">
                     <thead>
                       <tr className="border-b border-gray-200 bg-gray-100">
                         <th className="text-left px-4 py-3 text-xs font-semibold text-gray-600 uppercase">
-                          Ingredient
+                          Bahan
                         </th>
                         <th className="text-right px-4 py-3 text-xs font-semibold text-gray-600 uppercase">
-                          Required
+                          Diperlukan
                         </th>
                         <th className="text-right px-4 py-3 text-xs font-semibold text-gray-600 uppercase">
-                          Current Stock
+                          Stok Saat Ini
                         </th>
                         <th className="text-center px-4 py-3 text-xs font-semibold text-gray-600 uppercase">
                           Status
@@ -139,16 +139,16 @@ const ProductDetailModal = ({ isOpen, onClose, product }) => {
             {/* Sales Statistics */}
             {isRecipe && (
               <div>
-                <h4 className="font-semibold text-gray-900 mb-3">Sales Statistics</h4>
+                <h4 className="font-semibold text-gray-900 mb-3">Statistik Penjualan</h4>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="p-4 border border-gray-200 rounded-lg">
-                    <p className="text-sm text-gray-500">Average per Day</p>
+                    <p className="text-sm text-gray-500">Rata-rata per Hari</p>
                     <p className="text-xl font-bold text-gray-900">
                       {recipeDetail.salesStats.avgPerDay}x
                     </p>
                   </div>
                   <div className="p-4 border border-gray-200 rounded-lg">
-                    <p className="text-sm text-gray-500">Total Revenue</p>
+                    <p className="text-sm text-gray-500">Total Pendapatan</p>
                     <p className="text-xl font-bold text-gray-900">
                       Rp {recipeDetail.salesStats.revenue.toLocaleString('id-ID')}
                     </p>
@@ -160,9 +160,9 @@ const ProductDetailModal = ({ isOpen, onClose, product }) => {
             {/* Simple Product Stock */}
             {!isRecipe && product.stock && (
               <div>
-                <h4 className="font-semibold text-gray-900 mb-3">Stock Information</h4>
+                <h4 className="font-semibold text-gray-900 mb-3">Informasi Stok</h4>
                 <div className="p-4 border border-gray-200 rounded-lg">
-                  <p className="text-sm text-gray-500">Current Stock</p>
+                  <p className="text-sm text-gray-500">Stok Saat Ini</p>
                   <p className="text-xl font-bold text-gray-900">{product.stock}</p>
                 </div>
               </div>
@@ -172,9 +172,9 @@ const ProductDetailModal = ({ isOpen, onClose, product }) => {
           {/* Footer */}
           <div className="flex items-center justify-end gap-3 p-4 border-t border-gray-200">
             <Button variant="outline" onClick={onClose}>
-              Close
+              Tutup
             </Button>
-            <Button variant="primary">Edit Product</Button>
+            <Button variant="primary">Edit Produk</Button>
           </div>
         </div>
       </div>

@@ -26,15 +26,15 @@ const DashboardPage = () => {
     <MainLayout>
       {/* Page Header */}
       <PageHeader
-        title="Dashboard"
+        title="Dasbor"
         subtitle={today}
         actions={
           <>
             <Button variant="outline" icon={Calendar} size="sm">
-              Today
+              Hari Ini
             </Button>
             <Button variant="outline" icon={RefreshCw} size="sm">
-              Refresh
+              Segarkan
             </Button>
           </>
         }
@@ -50,13 +50,13 @@ const DashboardPage = () => {
       {/* Stock Monitoring Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         <StockMonitoringPanel
-          title="Stock Bakso Malang"
-          businessUnit="Food & Beverage"
+          title="Stok Bakso Malang"
+          businessUnit="Makanan & Minuman"
           items={dashboardData.stockItemsBakso}
         />
         <StockMonitoringPanel
-          title="Stock Steam Cuci"
-          businessUnit="Motor/Mobil Service"
+          title="Stok Steam Cuci"
+          businessUnit="Layanan Motor/Mobil"
           items={dashboardData.stockItemsSteam}
         />
       </div>

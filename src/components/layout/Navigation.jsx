@@ -107,7 +107,7 @@ const Navigation = () => {
                     onClick={() => setProfileDropdownOpen(false)}
                   >
                     <User className="w-4 h-4" />
-                    Profile
+                    Profil
                   </Link>
                   <Link
                     to="/settings"
@@ -115,12 +115,12 @@ const Navigation = () => {
                     onClick={() => setProfileDropdownOpen(false)}
                   >
                     <Settings className="w-4 h-4" />
-                    Settings
+                    Pengaturan
                   </Link>
                   <hr className="my-1 border-gray-200" />
                   <button className="flex items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-gray-100 w-full">
                     <LogOut className="w-4 h-4" />
-                    Logout
+                    Keluar
                   </button>
                 </div>
               )}

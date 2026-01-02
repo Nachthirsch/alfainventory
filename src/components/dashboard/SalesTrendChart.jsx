@@ -13,8 +13,8 @@ const SalesTrendChart = ({ data }) => {
     <Card>
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h3 className="text-lg font-semibold text-gray-900">Sales Trend</h3>
-          <p className="text-sm text-gray-500">This week's performance</p>
+          <h3 className="text-lg font-semibold text-gray-900">Tren Penjualan</h3>
+          <p className="text-sm text-gray-500">Performa minggu ini</p>
         </div>
         <div className="flex items-center gap-1 text-green-600 text-sm font-medium">
           <TrendingUp className="w-4 h-4" />
@@ -65,7 +65,7 @@ const SalesTrendChart = ({ data }) => {
       <div className="flex items-center justify-center gap-6 mt-4 pt-4 border-t border-gray-100">
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 bg-blue-500 rounded" />
-          <span className="text-sm text-gray-600">Daily Sales</span>
+          <span className="text-sm text-gray-600">Penjualan Harian</span>
         </div>
       </div>
     </Card>

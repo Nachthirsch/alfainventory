@@ -13,7 +13,7 @@ const AlertsPanel = ({ alerts }) => {
         <div className="flex items-center gap-2">
           <Bell className="w-5 h-5 text-gray-700" />
           <h3 className="text-lg font-semibold text-gray-900">
-            Alerts & Notifications
+            Peringatan & Notifikasi
           </h3>
           {alerts.length > 0 && (
             <span className="px-2 py-0.5 text-xs font-medium bg-red-100 text-red-800 rounded-full">
@@ -22,7 +22,7 @@ const AlertsPanel = ({ alerts }) => {
           )}
         </div>
         <button className="flex items-center gap-1 text-sm text-blue-600 hover:text-blue-700 font-medium">
-          View All
+          Lihat Semua
           <ChevronRight className="w-4 h-4" />
         </button>
       </div>
@@ -37,7 +37,7 @@ const AlertsPanel = ({ alerts }) => {
       {alerts.length === 0 && (
         <div className="text-center py-8 text-gray-500">
           <Bell className="w-12 h-12 mx-auto text-gray-300 mb-2" />
-          <p>No alerts at this time</p>
+          <p>Tidak ada peringatan saat ini</p>
         </div>
       )}
     </Card>

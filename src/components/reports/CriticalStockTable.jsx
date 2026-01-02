@@ -15,13 +15,13 @@ const CriticalStockTable = ({ items }) => {
               Item
             </th>
             <th className="text-right px-4 py-3 text-xs font-semibold text-gray-600 uppercase">
-              Current
+              Saat Ini
             </th>
             <th className="text-right px-4 py-3 text-xs font-semibold text-gray-600 uppercase">
               Minimum
             </th>
             <th className="text-left px-4 py-3 text-xs font-semibold text-gray-600 uppercase">
-              Action Required
+              Tindakan Diperlukan
             </th>
           </tr>
         </thead>
