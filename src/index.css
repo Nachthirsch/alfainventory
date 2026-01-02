@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+/* Alfa Inventory System - Global Styles */
+/* Using TailwindCSS v4 for all styling */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-sans text-gray-900 bg-gray-50 antialiased min-h-screen;
+  }
+  
+  #root {
+    @apply min-h-screen;
+  }
+}
+
+/* Custom scrollbar styling */
+@layer utilities {
+  .scrollbar-thin::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    @apply bg-gray-100 rounded;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded hover:bg-gray-400;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+  }
+}

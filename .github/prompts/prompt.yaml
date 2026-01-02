@@ -1,0 +1,965 @@
+name: "Inventory System UI Design Generator"
+description: "Generate complete UI/UX design implementation for dual business unit inventory management system (Bakso Malang & Steam Cuci Motor/Mobil) using React and TailwindCSS.  Focus on creating pixel-perfect, responsive layouts without backend logic."
+
+context:  |
+  You are a senior UI/UX designer tasked with creating a complete design system for an inventory management application. This system handles two business units:  Bakso Malang (F&B) and Steam Cuci Motor/Mobil (Automotive service).
+  
+  CRITICAL REQUIREMENTS:
+  - Use React with functional components and hooks
+  - Use TailwindCSS for ALL styling (NO custom CSS files)
+  - Create STATIC/MOCK designs only - NO backend integration
+  - Use MOCK DATA for all components
+  - Focus on visual design, layout, and user interface elements
+  - All interactive elements should be UI-only (no API calls, no state management logic)
+  - Responsive design:  mobile-first approach (sm, md, lg, xl breakpoints)
+  - Modern, clean, professional design aesthetic
+  - Use Lucide React for icons (import from 'lucide-react')
+  
+  TECH STACK: 
+  - React 18+ (functional components only)
+  - TailwindCSS (utility-first styling)
+  - Lucide React (icons)
+  - No additional UI libraries (build from scratch with Tailwind)
+
+design_system: 
+  color_palette:
+    primary: "blue-600"
+    primary_hover: "blue-700"
+    secondary: "gray-600"
+    success: "green-600"
+    warning: "yellow-500"
+    danger: "red-600"
+    background: "gray-50"
+    card: "white"
+    border: "gray-200"
+    text_primary: "gray-900"
+    text_secondary: "gray-600"
+    text_muted: "gray-400"
+  
+  typography:
+    heading_xl: "text-3xl font-bold"
+    heading_lg: "text-2xl font-bold"
+    heading_md: "text-xl font-semibold"
+    heading_sm: "text-lg font-semibold"
+    body_lg: "text-base"
+    body_md: "text-sm"
+    body_sm: "text-xs"
+  
+  spacing:
+    page_padding: "p-4 md:p-6 lg:p-8"
+    card_padding: "p-4 md:p-6"
+    section_gap: "space-y-6"
+    element_gap: "space-y-4"
+  
+  components:
+    button_primary:  "bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center gap-2"
+    button_secondary: "bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center gap-2"
+    button_danger: "bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center gap-2"
+    button_success: "bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center gap-2"
+    input:  "w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+    card: "bg-white rounded-lg shadow-sm border border-gray-200"
+    badge_success: "inline-flex items-center px-2. 5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800"
+    badge_warning: "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800"
+    badge_danger: "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800"
+    badge_info: "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
+    table_header: "bg-gray-50 border-b border-gray-200"
+    table_row: "border-b border-gray-100 hover:bg-gray-50 transition-colors"
+
+pages_to_generate:
+  - name: "Dashboard"
+    route: "/dashboard"
+    description: "Main overview page with real-time stock monitoring, sales summary, and alerts"
+    layout_structure:  |
+      - Top Navigation Bar (logo, menu items, user profile dropdown)
+      - Page Header (title, date, quick actions)
+      - KPI Cards Grid (3 columns: Today's Sales, Total Transactions, Low Stock Items)
+      - Real-Time Stock Monitoring Section (2 business units with horizontal scrollable stock cards)
+      - Charts Section (2 columns: Sales Trend Line Chart, Top Selling Products List)
+      - Alerts & Notifications Panel (list of recent alerts with color-coded priorities)
+    
+    components_needed:
+      - StatCard (displays KPI with icon, value, change percentage, trend indicator)
+      - StockCard (shows ingredient/product name, quantity, status badge with color coding)
+      - LineChart (mock chart visualization with gradient)
+      - AlertItem (notification item with icon, message, timestamp, priority badge)
+      - TopProductItem (product name, quantity sold, revenue)
+    
+    mock_data_structure:
+      kpi_stats:
+        - title: "Today's Sales"
+          value: "Rp 2,450,000"
+          change: "+12%"
+          trend: "up"
+          icon: "TrendingUp"
+        - title: "Total Transactions"
+          value:  "87"
+          change: "+5"
+          trend: "up"
+          icon: "ShoppingCart"
+        - title:  "Low Stock Items"
+          value: "12"
+          status: "alert"
+          icon: "AlertTriangle"
+      
+      stock_items_bakso:
+        - name: "Bakso"
+          quantity: "450 pcs"
+          status: "safe"
+          statusColor: "green"
+        - name: "Mie"
+          quantity: "5. 2 kg"
+          status: "safe"
+          statusColor: "green"
+        - name: "Sayur Sawi"
+          quantity: "150 g"
+          status: "low"
+          statusColor: "red"
+        - name: "Garam"
+          quantity: "200 g"
+          status: "reorder"
+          statusColor: "yellow"
+      
+      stock_items_steam:
+        - name:  "Shampoo Mobil"
+          quantity: "12 btl"
+          status: "safe"
+          statusColor: "green"
+        - name: "Wax Polish"
+          quantity: "8 btl"
+          status:  "safe"
+          statusColor:  "green"
+        - name:  "Microfiber"
+          quantity: "5 pcs"
+          status: "low"
+          statusColor: "red"
+      
+      alerts:
+        - type: "danger"
+          message: "Sayur Sawi stock below minimum (150g < 500g)"
+          timestamp: "2 hours ago"
+        - type: "danger"
+          message: "Microfiber stock below minimum (5 pcs < 10 pcs)"
+          timestamp: "3 hours ago"
+        - type:  "warning"
+          message: "Garam stock approaching minimum (200g)"
+          timestamp: "5 hours ago"
+        - type: "success"
+          message: "Stock In:  Bakso (500 pcs) received"
+          timestamp: "Today 08:30"
+      
+      top_products:
+        - name: "Bakso Jumbo"
+          quantity: "45x"
+          revenue: "Rp 1,125,000"
+        - name: "Mie Ayam Special"
+          quantity: "38x"
+          revenue: "Rp 760,000"
+        - name:  "Cuci Mobil Komplit"
+          quantity: "32x"
+          revenue: "Rp 960,000"
+    
+    design_notes:  |
+      - Use grid layout for KPI cards (grid-cols-1 md:grid-cols-3 gap-4)
+      - Stock monitoring cards should be horizontally scrollable on mobile (overflow-x-auto)
+      - Color code stock status:  Green (safe), Yellow (reorder soon), Red (low stock)
+      - Use shadow and hover effects for interactive elements
+      - Charts can be simple div-based mock visualizations with gradients
+      - Alerts should have left border color matching priority (border-l-4)
+      - Add smooth transitions on hover states
+
+  - name: "POS (Point of Sale)"
+    route: "/pos"
+    description: "Cashier interface for processing sales transactions with menu selection and cart management"
+    layout_structure:  |
+      - Top Navigation Bar
+      - Page Header (POS title, order number, table number input)
+      - Split Layout (2 columns on desktop, stacked on mobile):
+        - LEFT: Menu Items Grid (searchable, filterable, with stock indicators)
+        - RIGHT: Cart Summary (line items, quantity adjusters, totals, payment button)
+      - Payment Modal (overlay, payment method selection, amount received, change calculation)
+      - Receipt Modal (transaction summary, print button)
+    
+    components_needed:
+      - MenuCard (product image placeholder, name, price, stock badge, add to cart button)
+      - CartItem (product name, quantity adjuster with +/- buttons, subtotal, remove button)
+      - CartSummary (subtotal, tax, total with clear formatting)
+      - PaymentModal (payment method radio buttons, input fields, action buttons)
+      - StockBadge (Available/Out of Stock with conditional styling)
+      - SearchBar (input with search icon)
+      - FilterDropdown (category filter)
+    
+    mock_data_structure: 
+      menu_items:
+        - id: 1
+          name: "Bakso Jumbo"
+          price: 25000
+          image: "/placeholder-food.jpg"
+          category: "Food"
+          stock_available: true
+          icon: "🍲"
+        - id: 2
+          name: "Mie Ayam Special"
+          price: 20000
+          image: "/placeholder-food.jpg"
+          category: "Food"
+          stock_available: true
+          icon: "🍜"
+        - id: 3
+          name: "Sayur Asem"
+          price: 15000
+          image: "/placeholder-food.jpg"
+          category: "Food"
+          stock_available: false
+          missing_ingredients: ["Sayur Sawi"]
+          icon: "🥗"
+        - id: 4
+          name: "Es Teh Manis"
+          price: 5000
+          category: "Beverage"
+          stock_available: true
+          icon: "🥤"
+        - id: 5
+          name: "Kerupuk"
+          price: 3000
+          category: "Snack"
+          stock_available: true
+          icon: "🍢"
+      
+      cart_items:
+        - id: 1
+          name: "Bakso Jumbo"
+          price: 25000
+          quantity:  1
+        - id: 4
+          name: "Es Teh Manis"
+          price: 5000
+          quantity:  2
+        - id: 5
+          name: "Kerupuk"
+          price: 3000
+          quantity: 1
+      
+      payment_methods:
+        - id:  "cash"
+          label: "Cash"
+          icon:  "Banknote"
+        - id: "e-wallet"
+          label: "E-Wallet (Gopay/OVO)"
+          icon: "Smartphone"
+        - id: "debit"
+          label: "Debit Card"
+          icon: "CreditCard"
+    
+    design_notes: |
+      - Menu items in grid (grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4)
+      - Out of stock items should be grayed out with disabled button
+      - Cart should be sticky on desktop (sticky top-4)
+      - Use disabled state styling for unavailable items (opacity-50)
+      - Quantity adjusters with rounded buttons and borders
+      - Payment modal should overlay entire screen with backdrop (bg-black/50)
+      - Use large touch-friendly buttons for mobile (min-h-12)
+      - Format currency with Rp prefix and thousand separators
+      - Show missing ingredients as small warning text for out-of-stock items
+
+  - name: "Master Products"
+    route: "/products"
+    description: "Product and ingredient management with recipe builder functionality"
+    layout_structure:  |
+      - Top Navigation Bar
+      - Page Header (title, add product button, search and filter controls)
+      - Tabs Navigation (Products, Ingredients Only, Recipe Products)
+      - Products Table (sortable columns, action buttons)
+      - Add/Edit Product Modal (form with conditional recipe builder section)
+      - Product Detail View Modal (complete product info, recipe composition, sales stats)
+    
+    components_needed:
+      - DataTable (sortable headers, pagination, row actions)
+      - ProductTypebadge (Simple/Recipe indicator with icons)
+      - AddProductModal (multi-step form with product type toggle)
+      - RecipeBuilder (dynamic ingredient rows with add/remove functionality)
+      - IngredientRow (dropdown selector, quantity input, unit display, current stock info)
+      - ProductDetailCard (image, info grid, recipe table, statistics)
+      - TabNavigation (active state styling)
+      - ActionButton (icon buttons for view/edit/delete)
+    
+    mock_data_structure:
+      products_list:
+        - id: 1
+          name: "Bakso Jumbo"
+          type: "recipe"
+          category: "Food"
+          price: 25000
+          icon: "🍲"
+        - id: 2
+          name: "Mie Ayam Special"
+          type: "recipe"
+          category: "Food"
+          price: 20000
+          icon: "🍜"
+        - id: 3
+          name: "Es Teh Manis"
+          type: "simple"
+          category: "Beverage"
+          price: 5000
+          stock: "45 cups"
+          icon: "🥤"
+        - id: 4
+          name: "Kerupuk"
+          type: "simple"
+          category: "Snack"
+          price: 3000
+          stock: "120 pcs"
+          icon:  "🍢"
+        - id: 5
+          name:  "Shampoo Mobil"
+          type: "simple"
+          category: "Cleaning"
+          price: 15000
+          stock: "12 btl"
+          icon: "🧴"
+      
+      recipe_detail:
+        product_name: "Bakso Jumbo"
+        ingredients: 
+          - name: "Bakso"
+            required: "5 pcs"
+            current_stock: "450 pcs"
+            status: "sufficient"
+            status_color: "green"
+          - name: "Mie"
+            required: "100 gram"
+            current_stock: "5200 gram"
+            status: "sufficient"
+            status_color:  "green"
+          - name:  "Sayur Sawi"
+            required: "50 gram"
+            current_stock: "150 gram"
+            status: "low"
+            status_color: "red"
+          - name: "Garam"
+            required: "5 gram"
+            current_stock: "200 gram"
+            status: "reorder"
+            status_color: "yellow"
+          - name: "Kaldu"
+            required: "500 ml"
+            current_stock: "10000 ml"
+            status: "sufficient"
+            status_color: "green"
+        max_servings: 3
+        limiting_ingredient: "Sayur Sawi"
+        sales_stats:
+          total_sold: 345
+          avg_per_day: 11.5
+          revenue: 8625000
+      
+      ingredient_options:
+        - id: 1
+          name: "Bakso"
+          unit: "pcs"
+          current_stock: 450
+        - id: 2
+          name: "Mie"
+          unit: "gram"
+          current_stock: 5200
+        - id: 3
+          name: "Sayur Sawi"
+          unit: "gram"
+          current_stock: 150
+    
+    design_notes: |
+      - Table should be responsive (horizontal scroll on mobile)
+      - Use alternating row colors for better readability
+      - Recipe type badge with 📝 icon, Simple with ✅ icon
+      - Modal forms should be scrollable with fixed header and footer
+      - Recipe builder with dynamic rows (array of ingredient selectors)
+      - Show "Estimated Servings Possible" calculation at bottom of recipe builder
+      - Ingredient stock info in muted text beside quantity input
+      - Use color-coded status badges in recipe detail table
+      - Action buttons in icon-only format with tooltips (use title attribute)
+      - Delete actions should have confirmation styling (red color)
+
+  - name: "Inventory Management"
+    route: "/inventory"
+    description: "Complete stock management with current stock view, stock in, adjustments, and movement history"
+    layout_structure: |
+      - Top Navigation Bar
+      - Page Header (title, quick action buttons, export options)
+      - Tab Navigation (Current Stock, Stock In, Stock Adjustment, History)
+      - Tab Content (table views with forms/modals specific to each tab)
+      - Stock In Form Modal (detailed purchase entry)
+      - Stock Adjustment Form Modal (waste/expired/missing recording)
+    
+    components_needed:
+      - InventoryTable (current stock with status indicators and quick add buttons)
+      - StockStatusIndicator (colored dot with status label)
+      - StockInTable (recent entries with supplier and cost info)
+      - StockInModal (form with date, item selector, quantity, supplier, invoice fields)
+      - StockAdjustmentModal (adjustment type radio, item selector, negative quantity, reason, photo upload)
+      - StockHistoryTable (all movements with type icons, quantity changes, running balance)
+      - MovementTypeBadge (IN/SALE/ADJUSTMENT with distinct colors and icons)
+      - QuickStockButton (small add button on each row)
+      - FilterBar (search, date range, item filter, status filter)
+    
+    mock_data_structure:
+      current_stock:
+        - id:  1
+          name: "Bakso"
+          type: "Ingredient"
+          unit: "pcs"
+          current:  450
+          minimum: 100
+          status: "safe"
+          status_color: "green"
+        - id: 2
+          name: "Mie"
+          type: "Ingredient"
+          unit: "gram"
+          current: 5200
+          minimum:  1000
+          status: "safe"
+          status_color: "green"
+        - id: 3
+          name: "Sayur Sawi"
+          type: "Ingredient"
+          unit: "gram"
+          current: 150
+          minimum: 500
+          status: "low"
+          status_color: "red"
+        - id: 4
+          name: "Garam"
+          type: "Ingredient"
+          unit: "gram"
+          current: 200
+          minimum: 200
+          status: "reorder"
+          status_color: "yellow"
+        - id: 5
+          name: "Shampoo Mobil"
+          type: "Product"
+          unit: "bottle"
+          current: 12
+          minimum: 5
+          status: "safe"
+          status_color: "green"
+      
+      stock_in_entries:
+        - date: "02/01/2026 08:30"
+          item:  "Bakso"
+          quantity: "500 pcs"
+          supplier:  "Supplier A"
+          cost: 500000
+          entry_by: "Admin"
+        - date: "01/01/2026 15:20"
+          item: "Mie"
+          quantity: "10 kg"
+          supplier: "Supplier B"
+          cost: 250000
+          entry_by: "Staff1"
+        - date: "01/01/2026 10:00"
+          item: "Shampoo Mobil"
+          quantity: "20 btl"
+          supplier:  "Supplier C"
+          cost: 600000
+          entry_by: "Admin"
+      
+      stock_adjustments: 
+        - date: "01/01/2026 16:00"
+          item: "Sayur Sawi"
+          quantity: "-100 g"
+          type: "Waste"
+          reason: "Wilted"
+          by: "Staff1"
+        - date: "31/12/2025 09:00"
+          item: "Bakso"
+          quantity: "-50 pcs"
+          type: "Expired"
+          reason: "Past date"
+          by: "Admin"
+      
+      stock_history:
+        - datetime: "02/01/2026 08:30"
+          item: "Bakso"
+          type: "in"
+          quantity: "+500 pcs"
+          balance: 500
+          notes: "PO#123"
+        - datetime: "02/01/2026 09:15"
+          item: "Bakso"
+          type: "sale"
+          quantity: "-5 pcs"
+          balance:  495
+          notes: "Order #0782"
+        - datetime: "02/01/2026 09:30"
+          item: "Bakso"
+          type:  "sale"
+          quantity: "-5 pcs"
+          balance:  490
+          notes: "Order #0783"
+        - datetime: "02/01/2026 10:00"
+          item: "Sayur Sawi"
+          type: "adjustment"
+          quantity: "-100 g"
+          balance: 50
+          notes: "Waste:  Wilted"
+        - datetime:  "02/01/2026 10:30"
+          item:  "Sayur Sawi"
+          type: "in"
+          quantity: "+1000 g"
+          balance: 1050
+          notes: "PO#124"
+    
+    design_notes: |
+      - Current stock table with color-coded status dots before item name
+      - Quick add stock button in each row (small icon button)
+      - Stock In table with currency formatting for cost column
+      - History table with movement type icons:  📥 (IN), 🛒 (SALE), 🗑️ (ADJ)
+      - Use red text for negative quantities, green for positive
+      - Date range filter with calendar icon and dropdown
+      - Export buttons with download icon (CSV/Excel)
+      - Adjustment form with warning message before submit (yellow background)
+      - Photo upload area with dashed border and upload icon
+      - Running balance column in history should be bold
+      - Movement type badges with distinct colors per type
+      - Filter bar sticky at top when scrolling table
+
+  - name: "Reports"
+    route: "/reports"
+    description: "Comprehensive reporting with stock reports, sales analysis, financial P&L, and custom report builder"
+    layout_structure: |
+      - Top Navigation Bar
+      - Page Header (title, date range selector, business unit filter, export buttons)
+      - Report Category Tabs (Stock Reports, Sales Reports, Financial Reports, Custom)
+      - Report Cards (multiple report sections stacked vertically)
+      - Chart Visualizations (bar charts, line charts, pie charts using Tailwind mock-ups)
+      - Data Tables (summary tables within each report card)
+    
+    components_needed:
+      - ReportCard (card container with title, action buttons, content area)
+      - StockStatusOverview (stats grid with percentage breakdown and visual bar)
+      - CriticalStockTable (table with action required column)
+      - StockMovementAnalysis (table with usage, restock, net change columns)
+      - StockValuation (total value display with breakdown list)
+      - SalesSummary (KPI grid with revenue, transactions, average order value)
+      - TopSellingTable (product ranking with quantity and revenue)
+      - SalesTrendChart (mock line chart with data points)
+      - SalesVsStockCorrelation (comparison table with expected vs actual)
+      - ProfitLossStatement (hierarchical financial breakdown)
+      - CustomReportBuilder (form with checkboxes, date range, grouping options)
+      - DateRangePicker (from/to date inputs with calendar icons)
+      - ExportButtons (print and download buttons)
+    
+    mock_data_structure:
+      stock_summary:
+        total_items: 45
+        safe_stock: 28
+        safe_percentage: 62
+        reorder_soon: 10
+        reorder_percentage: 22
+        low_stock: 7
+        low_percentage: 16
+        out_of_stock: 0
+        out_percentage: 0
+      
+      critical_items:
+        - item: "Sayur Sawi"
+          current: "150 g"
+          minimum: "500 g"
+          action: "Order 5 kg"
+        - item: "Microfiber"
+          current: "5 pcs"
+          minimum:  "10 pcs"
+          action:  "Order 20 pcs"
+        - item: "Tire Cleaner"
+          current: "2 btl"
+          minimum: "5 btl"
+          action:  "Order 10 bottles"
+      
+      top_used_ingredients:
+        - ingredient: "Mie"
+          used: "-8. 5 kg"
+          restocked: "+10 kg"
+          net_change: "+1.5 kg"
+          net_color: "green"
+        - ingredient: "Bakso"
+          used: "-250 pcs"
+          restocked: "+500 pcs"
+          net_change: "+250 pcs"
+          net_color: "green"
+        - ingredient: "Sayur Sawi"
+          used: "-2 kg"
+          restocked:  "+1 kg"
+          net_change: "-1 kg"
+          net_color: "red"
+      
+      stock_valuation:
+        bakso_unit_value: 12450000
+        steam_unit_value: 3200000
+        total_value: 15650000
+        top_valuable: 
+          - item: "Bakso (450 pcs @ Rp 1,000)"
+            value: 450000
+          - item: "Shampoo Mobil (12 btl @ Rp 30,000)"
+            value: 360000
+      
+      sales_summary:
+        total_revenue: 4850000
+        total_transactions: 165
+        average_order:  29394
+        bakso_revenue: 3200000
+        bakso_percentage: 66
+        steam_revenue: 1650000
+        steam_percentage: 34
+      
+      top_products:
+        - rank: 1
+          name: "Bakso Jumbo"
+          qty: "45x"
+          revenue: 1125000
+        - rank: 2
+          name: "Mie Ayam Special"
+          qty: "38x"
+          revenue: 760000
+        - rank: 3
+          name: "Cuci Mobil Komplit"
+          qty: "32x"
+          revenue: 960000
+      
+      profit_loss: 
+        revenue:  45850000
+        cogs_ingredients: 12500000
+        cogs_products: 3800000
+        total_cogs: 16300000
+        gross_profit: 29550000
+        gross_margin: 64. 4
+        salaries:  8000000
+        utilities: 1500000
+        rent: 5000000
+        other_expenses: 1200000
+        total_opex: 15700000
+        net_profit: 13850000
+        net_margin: 30.2
+    
+    design_notes: |
+      - Stack report cards vertically with gap-6
+      - Each card should have export buttons in top-right corner
+      - Stock status overview with horizontal bar visualization (stacked colored divs)
+      - Use grid layout for KPI displays (2 or 3 columns)
+      - Critical items table with red icon/badge for urgency
+      - Net change column with conditional text color (red negative, green positive)
+      - Mock line chart using div elements with heights representing data points
+      - Chart with gradient background (bg-gradient-to-t from-blue-50)
+      - Sales trend with hover effect on data points
+      - P&L statement with indentation for hierarchy (pl-4, pl-8)
+      - Use border-t for section separators in financial report
+      - Bold and larger text for total values (text-xl font-bold)
+      - Custom report builder with checkbox grid layout
+      - Date range with two inputs side by side
+      - Insights section with light blue background (bg-blue-50) and bulb icon
+
+shared_components:
+  - name: "Navigation"
+    description: "Top navigation bar with logo, menu items, and user profile"
+    structure:  |
+      - Fixed top bar with shadow
+      - Left:  Logo/brand name with icon
+      - Center: Menu items (Dashboard, POS, Products, Inventory, Reports)
+      - Right: User info with avatar and dropdown menu
+    styling: "bg-white border-b border-gray-200 shadow-sm fixed top-0 w-full z-50"
+    mock_data: 
+      user: 
+        name: "Admin"
+        role: "Administrator"
+        avatar_initials: "AD"
+      menu_items:
+        - label: "Dashboard"
+          icon: "LayoutDashboard"
+          path:  "/dashboard"
+        - label:  "POS"
+          icon:  "ShoppingCart"
+          path: "/pos"
+        - label: "Products"
+          icon:  "Package"
+          path: "/products"
+        - label: "Inventory"
+          icon: "Warehouse"
+          path: "/inventory"
+        - label: "Reports"
+          icon: "BarChart3"
+          path: "/reports"
+  
+  - name: "Sidebar"
+    description: "Alternative navigation layout - collapsible sidebar for larger screens"
+    structure: |
+      - Fixed left sidebar with collapse toggle
+      - Logo at top
+      - Vertical menu items with icons and labels
+      - User profile at bottom
+      - Collapses to icon-only on mobile
+    styling: "bg-white border-r border-gray-200 h-screen fixed left-0 top-0 w-64 lg:w-20 lg:hover:w-64 transition-all"
+    note: "Optional alternative to top navigation"
+  
+  - name: "Modal"
+    description: "Reusable modal overlay component"
+    structure: |
+      - Full screen overlay with semi-transparent backdrop
+      - Centered modal container with max width
+      - Header with title and close button
+      - Scrollable body content
+      - Footer with action buttons
+    styling: "fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+    variants: 
+      - size_sm: "max-w-md"
+      - size_md: "max-w-2xl"
+      - size_lg: "max-w-4xl"
+      - size_xl: "max-w-6xl"
+  
+  - name: "Table"
+    description: "Reusable data table with sorting and pagination"
+    structure: |
+      - Table container with horizontal scroll
+      - Header row with sortable columns
+      - Body rows with hover effect
+      - Pagination controls at bottom
+      - Optional row actions column
+    styling: "w-full border-collapse"
+    features:
+      - Sortable headers with arrow icons
+      - Alternating row colors option
+      - Sticky header on scroll
+      - Responsive (horizontal scroll on mobile)
+  
+  - name: "Form"
+    description: "Reusable form components (input, select, textarea)"
+    structure: |
+      - Form field wrapper with label
+      - Input/select/textarea with consistent styling
+      - Error message display
+      - Help text support
+    styling_variants:
+      input:  "w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+      select: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+      textarea: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 min-h-24"
+      label: "block text-sm font-medium text-gray-700 mb-1"
+      error: "text-red-600 text-xs mt-1"
+      help: "text-gray-500 text-xs mt-1"
+
+responsive_design:
+  mobile: "sm:  (640px)"
+    - Stack all grid layouts to single column
+    - Horizontal scroll for tables
+    - Full-width modals
+    - Bottom navigation option
+    - Collapsible sections with accordions
+    - Touch-friendly button sizes (min-h-12)
+  
+  tablet: "md: (768px)"
+    - 2-column grid layouts
+    - Show more data in tables
+    - Sidebar navigation option
+    - Larger modal sizes
+  
+  desktop: "lg: (1024px), xl: (1280px)"
+    - 3-4 column grid layouts
+    - Full data table display
+    - Side-by-side layouts
+    - Larger chart visualizations
+    - Hover effects enabled
+
+ui_patterns:
+  empty_states:
+    - Centered icon with muted color
+    - Descriptive message
+    - Action button (e.g., "Add First Product")
+    - Example:  "No products yet. Start by adding your first product."
+  
+  loading_states: 
+    - Skeleton loaders with gray pulsing rectangles
+    - Spinner for button loading states
+    - Disable interactive elements during load
+  
+  error_states:
+    - Red border on form fields
+    - Error icon with message
+    - Toast notification for global errors
+  
+  success_feedback:
+    - Green checkmark icon
+    - Success message with auto-dismiss
+    - Toast notification at top-right
+  
+  confirmation_dialogs:
+    - Modal overlay with warning icon
+    - Clear question (e.g., "Are you sure you want to delete? ")
+    - Danger action button (red) and cancel button
+
+accessibility:
+  - Use semantic HTML elements
+  - Add aria-labels for icon-only buttons
+  - Ensure sufficient color contrast (WCAG AA)
+  - Keyboard navigation support (focus states with ring)
+  - Alt text for images (use empty alt="" for decorative)
+  - Focus visible styles (focus:ring-2 focus:ring-offset-2)
+
+file_structure:  |
+  src/
+  ├── components/
+  │   ├── layout/
+  │   │   ├── Navigation.jsx
+  │   │   ├── Sidebar.jsx
+  │   │   └── PageHeader.jsx
+  │   ├── common/
+  │   │   ├── Button.jsx
+  │   │   ├── Card.jsx
+  │   │   ├── Badge.jsx
+  │   │   ├── Modal.jsx
+  │   │   ├── Table.jsx
+  │   │   ├── Input.jsx
+  │   │   ├── Select.jsx
+  │   │   └── Textarea.jsx
+  │   ├── dashboard/
+  │   │   ├── StatCard.jsx
+  │   │   ├── StockCard.jsx
+  │   │   ├── AlertItem.jsx
+  │   │   ├── TopProductItem.jsx
+  │   │   └── SalesTrendChart.jsx
+  │   ├── pos/
+  │   │   ├── MenuCard.jsx
+  │   │   ├── CartItem.jsx
+  │   │   ├── CartSummary.jsx
+  │   │   ├── PaymentModal.jsx
+  │   │   └── ReceiptModal.jsx
+  │   ├── products/
+  │   │   ├── ProductTable.jsx
+  │   │   ├── AddProductModal.jsx
+  │   │   ├── RecipeBuilder.jsx
+  │   │   ├── IngredientRow.jsx
+  │   │   └── ProductDetailModal.jsx
+  │   ├── inventory/
+  │   │   ├── InventoryTable.jsx
+  │   │   ├── StockInModal.jsx
+  │   │   ├── StockAdjustmentModal.jsx
+  │   │   └── StockHistoryTable.jsx
+  │   └── reports/
+  │       ├── ReportCard.jsx
+  │       ├── StockStatusOverview.jsx
+  │       ├── CriticalStockTable.jsx
+  │       ├── SalesSummary.jsx
+  │       └── ProfitLossStatement.jsx
+  ├── pages/
+  │   ├── Dashboard.jsx
+  │   ├── POS.jsx
+  │   ├── Products.jsx
+  │   ├── Inventory.jsx
+  │   └── Reports.jsx
+  ├── utils/
+  │   ├── mockData.js (all mock data organized by module)
+  │   └── formatters.js (currency, date formatters)
+  └── App.jsx
+
+implementation_guidelines:
+  component_structure:  |
+    - Each component in its own file
+    - Use functional components with hooks (useState for UI state only)
+    - Props destructuring in function parameters
+    - No business logic - UI only
+    - All data passed as props from mock data
+  
+  styling_approach: |
+    - Use Tailwind utility classes only
+    - No custom CSS files
+    - Responsive classes (sm:, md:, lg:, xl:)
+    - Use @apply only if absolutely necessary (prefer inline utilities)
+    - Consistent spacing using Tailwind scale (p-4, gap-6, etc.)
+  
+  state_management: |
+    - Use useState for UI state only (modal open/close, tab selection, etc.)
+    - NO Redux, NO Context API for data
+    - NO API calls or data fetching
+    - All data from mock data files
+  
+  interactivity: |
+    - onClick handlers for UI actions (open modal, change tab, etc.)
+    - Form inputs with onChange for controlled components
+    - Button disabled states
+    - Hover effects with Tailwind hover:  variants
+    - NO form submission logic
+    - NO data mutation (just UI simulation)
+  
+  code_quality: |
+    - Clean, readable code with proper indentation
+    - Descriptive component and variable names
+    - Comments for complex UI logic
+    - Consistent formatting
+    - PropTypes or TypeScript types (optional but recommended)
+
+mock_data_approach:  |
+  Create a comprehensive mockData.js file with organized sections:
+  - dashboardData (KPIs, stock items, alerts, charts)
+  - posData (menu items, categories)
+  - productsData (products list, ingredients, recipes)
+  - inventoryData (current stock, movements, adjustments)
+  - reportsData (all report statistics and tables)
+  
+  Import and use this data in components as props. 
+  No data transformation logic - keep it simple and static.
+
+icon_usage: |
+  Import icons from lucide-react: 
+  import { TrendingUp, ShoppingCart, Package, AlertTriangle } from 'lucide-react'
+  
+  Common icons to use:
+  - TrendingUp/TrendingDown:  trends
+  - ShoppingCart: sales/POS
+  - Package: products
+  - Warehouse: inventory
+  - BarChart3: reports
+  - AlertTriangle: warnings
+  - CheckCircle: success
+  - XCircle: errors
+  - Plus/Minus: add/remove
+  - Edit/Trash: actions
+  - Search: search functionality
+  - Filter: filtering
+  - Download: export
+  - Printer: print
+  - Eye: view details
+  - Settings: configuration
+
+critical_requirements:  |
+  DO: 
+  - Create pixel-perfect UI with Tailwind
+  - Use mock data for everything
+  - Focus on visual design and layout
+  - Make responsive for all screen sizes
+  - Use Lucide icons consistently
+  - Create reusable components
+  - Add hover and focus states
+  - Use proper color coding (green=safe, yellow=warning, red=danger)
+  - Format currency properly (Rp X,XXX,XXX)
+  - Add empty states for tables/lists
+  
+  DON'T:
+  - Add backend logic or API calls
+  - Implement authentication
+  - Add state management libraries (Redux, Zustand)
+  - Create database schemas
+  - Add form validation logic (just UI feedback)
+  - Implement actual calculations (use pre-calculated mock values)
+  - Add routing logic (just create page components)
+  - Worry about data persistence
+  - Add complex business logic
+
+deliverable:  |
+  Generate complete React components with:
+  1. All 5 main page components (Dashboard, POS, Products, Inventory, Reports)
+  2. All shared/reusable components (Navigation, Modal, Table, Form elements, etc.)
+  3. Page-specific components (StatCard, MenuCard, ProductTable, etc.)
+  4. Comprehensive mockData.js file with all data structures
+  5. App.jsx with basic structure (no routing needed, just render one page at a time)
+  6. Each component fully styled with TailwindCSS
+  7. Responsive design implemented
+  8. All interactive UI elements (buttons, modals, tabs work visually)
+  
+  Focus on creating a beautiful, professional UI that looks production-ready, even though it's static/mock. 
